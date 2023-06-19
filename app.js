@@ -3,6 +3,9 @@ const EXAMPLE_IMG = document.getElementById('exampleImg')
 const container = document.getElementById('container')
 const reloadImgButton = document.getElementById('reloadImgButton')
 reloadImgButton.addEventListener('click', () => location.reload())
+const load = document.getElementById('load')
+
+EXAMPLE_IMG.classList.add('loading')
 
 let movenet = undefined
 let ssdCocoModel = undefined
@@ -15,7 +18,6 @@ async function loadAndRunModel() {
 
   if (!ssdCocoModel) { return }
 
-  let exempleInputTensor = tf.zeros([1, 192, 192, 3], 'int32')
   let imageTensor = tf.browser.fromPixels(EXAMPLE_IMG)
 
   ssdCocoModel.detect(EXAMPLE_IMG).then(async (predictions) => {
@@ -28,7 +30,8 @@ async function loadAndRunModel() {
       const confidence = Math.round(parseFloat(prediction.score) * 100)
 
       if (confidence > 50 && prediction.class == 'person') {
-
+        EXAMPLE_IMG.classList.remove('loading')
+        load.classList.add('invisible')
         const p = document.createElement('p')
         p.innerText = `${prediction.class} - ${confidence}%`
         p.style = `
@@ -36,7 +39,6 @@ async function loadAndRunModel() {
         position: absolute;
         top: 1rem;
         left: 1rem;
-        opacity: .5;
         `
 
         const box = document.createElement('div')
