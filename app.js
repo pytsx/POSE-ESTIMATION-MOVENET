@@ -22,7 +22,7 @@ async function loadAndRunModel() {
 
   ssdCocoModel.detect(EXAMPLE_IMG).then(async (predictions) => {
 
-    if (predictions.length == 0) { location.reload() }
+    // if (predictions.length == 0) { location.reload() }
 
 
     for (let i = 0; i < predictions.length; i++) {
@@ -82,7 +82,7 @@ async function loadAndRunModel() {
         let tensorOutput = movenet.predict(tf.expandDims(resizedTensor))
         let arrayOutput = await tensorOutput.array()
 
-        if (arrayOutput[0][0].length < 10) { location.reload() }
+        // if (arrayOutput[0][0].length < 10) { location.reload() }
         console.log(arrayOutput[0][0].length);
         for (let i = 0; i < arrayOutput[0][0].length; i++) {
           const position = arrayOutput[0][0][i]
