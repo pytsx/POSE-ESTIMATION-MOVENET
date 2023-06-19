@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pose estimation</title>
+  <link rel='stylesheet' href="style.css">
+</head>
+
+<body>
+  <div id="container">
+
+    <img id="exampleImg" width="640" height="500" crossorigin
+      src=" https://source.unsplash.com/random/?body,person,human" />
+  </div>
+  <button id="reloadImgButton"> recarregar</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js" type="text/javascript"></script>
+  <!-- Load the coco-ssd model to use to recognize things in images -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
