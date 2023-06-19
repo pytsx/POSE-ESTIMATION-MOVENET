@@ -5,7 +5,6 @@ const reloadImgButton = document.getElementById('reloadImgButton')
 reloadImgButton.addEventListener('click', () => location.reload())
 // const load = document.getElementById('load')
 
-EXAMPLE_IMG.classList.add('loading')
 
 let movenet = undefined
 let ssdCocoModel = undefined
@@ -30,8 +29,6 @@ async function loadAndRunModel() {
       const confidence = Math.round(parseFloat(prediction.score) * 100)
 
       if (confidence > 50 && prediction.class == 'person') {
-        EXAMPLE_IMG.classList.remove('loading')
-        // load.classList.add('invisible')
         const p = document.createElement('p')
         p.innerText = `${prediction.class} - ${confidence}%`
         p.style = `
