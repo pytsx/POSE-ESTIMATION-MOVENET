@@ -3,7 +3,7 @@ const EXAMPLE_IMG = document.getElementById('exampleImg')
 const container = document.getElementById('container')
 const reloadImgButton = document.getElementById('reloadImgButton')
 reloadImgButton.addEventListener('click', () => location.reload())
-const load = document.getElementById('load')
+// const load = document.getElementById('load')
 
 EXAMPLE_IMG.classList.add('loading')
 
@@ -31,7 +31,7 @@ async function loadAndRunModel() {
 
       if (confidence > 50 && prediction.class == 'person') {
         EXAMPLE_IMG.classList.remove('loading')
-        load.classList.add('invisible')
+        // load.classList.add('invisible')
         const p = document.createElement('p')
         p.innerText = `${prediction.class} - ${confidence}%`
         p.style = `
@@ -83,7 +83,7 @@ async function loadAndRunModel() {
         let arrayOutput = await tensorOutput.array()
 
         // if (arrayOutput[0][0].length < 10) { location.reload() }
-        console.log(arrayOutput[0][0].length);
+        // console.log(arrayOutput[0][0].length);
         for (let i = 0; i < arrayOutput[0][0].length; i++) {
           const position = arrayOutput[0][0][i]
           const point = document.createElement('div')
